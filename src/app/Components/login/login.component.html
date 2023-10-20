@@ -1,0 +1,43 @@
+<div style="display: flex; justify-content: center; align-items: center;">
+  <form (ngSubmit)="LogIn(email.value,pass.value)" class="col-4" [formGroup]="userFormGroup">
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example1">Email address</label>
+      <input #email type="email" id="form2Example1" class="form-control" formControlName="Emaillogin"
+        [class.is-valid]="EmailLogin?.valid" [class.is-invalid]="EmailLogin?.invalid" />
+
+      <div class="alert alert-danger" [hidden]="EmailLogin?.valid || EmailLogin?.untouched">
+        <small *ngIf="EmailLogin?.errors?.['required']"></small>
+        <small *ngIf="EmailLogin?.errors?.['pattern']">Must Contrain Number, Character and ((gmail or
+          yahoo).com)</small>
+      </div>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <label class="form-label" for="form2Example2">Password</label>
+
+      <input #pass type="password" id="Passs" name="Passs" class="form-control form-control-lg"
+        formControlName="Passwordlogin" [class.is-valid]="PassLogin?.valid" [class.is-invalid]="PassLogin?.invalid">
+      <div class="alert alert-danger" [hidden]="PassLogin?.valid || PassLogin?.untouched">
+        <small *ngIf="PassLogin?.errors?.['required']"> </small>
+        <small *ngIf="PassLogin?.errors?.['pattern']">Must Contrain At Least One Number, Upper, Lower, Spicial Character
+        </small>
+        <small *ngIf="invalidUser"> Invalid UserName or Password</small>
+
+      </div>
+    </div>
+    <!-- 2 column grid layout for inline styling -->
+    <div class="row mb-4">
+      <div class="col d-flex justify-content-center">
+        <!-- Checkbox -->
+
+      </div>
+
+
+    </div>
+
+    <!-- Submit button -->
+    <input class="my-2 btn border text-primary fw-bold fs-4 w-100" type="submit" value="LogIn">
+  </form>
+</div>
